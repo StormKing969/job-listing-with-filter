@@ -18,7 +18,9 @@ const Home = () => {
       setSearchTrigger(true);
       ApplicationCardDynamicMargin = "";
       if (filter.length !== 0) {
-        setFilter((prevState) => [...prevState, searchTerm]);
+        if (!filter.includes(searchTerm)) {
+          setFilter((prevState) => [...prevState, searchTerm]);
+        }
       } else {
         setFilter([searchTerm]);
       }
@@ -26,7 +28,7 @@ const Home = () => {
       setSearchTrigger(false);
       ApplicationCardDynamicMargin = "first:mt-35";
     }
-  }, [searchTerm, searchTrigger]);
+  }, [searchTerm]);
 
   return (
     <main className={"p-0 m-0 box-border bg-blue-50 relative z-10"}>
@@ -45,12 +47,7 @@ const Home = () => {
         className={"flex flex-col gap-3 items-center justify-center p-5"}
       >
         <div className={"lg:w-3/4 w-[350px]"}>
-          {searchTrigger && (
-            <SearchBar
-              searchTerm={searchTerm}
-              setJobApplications={setJobApplications}
-            />
-          )}
+          {searchTrigger && filter.length !== 0 && <SearchBar filter={filter} setFilter={setFilter} />}
 
           {jobApplications.map((item) => (
             <ApplicationCard
