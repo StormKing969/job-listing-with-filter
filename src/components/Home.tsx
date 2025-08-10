@@ -30,11 +30,16 @@ const Home = () => {
 
   return (
     <main className={"p-0 m-0 box-border bg-blue-50 relative z-10"}>
-      <img
-        src={"/bg-header-mobile.svg"}
-        alt={"Background Image"}
-        className={"w-full h-20 mb-5 absolute -z-1"}
-      />
+      <div className={"absolute h-20 w-full bg-blue-400 -z-10"} />
+
+      <picture className={"w-full h-20 mb-5 absolute -z-10"}>
+        <source media="(min-width: 1024px)" srcSet="/bg-header-desktop.svg" />
+        <img
+          src={"/bg-header-mobile.svg"}
+          alt={"Responsive Background Image"}
+          className={"w-full h-20"}
+        />
+      </picture>
 
       <section
         className={"flex flex-col gap-3 items-center justify-center p-5"}
