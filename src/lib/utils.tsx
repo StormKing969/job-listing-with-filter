@@ -14,13 +14,14 @@ export function loadFilterJobApplications(
       return (
         (item.new && ele === "New!") ||
         (item.featured && ele === "Featured") ||
-        Object.values(item).includes(ele) ||
+        item.role?.toLowerCase() === ele.toLowerCase() ||
+        item.level?.toLowerCase() === ele.toLowerCase() ||
         (item.languages &&
-          item.languages.every((lang) => {
+          item.languages.some((lang) => {
             return lang.toLowerCase() === ele.toLowerCase();
           })) ||
         (item.tools &&
-          item.tools.every((tool) => {
+          item.tools.some((tool) => {
             return tool.toLowerCase() === ele.toLowerCase();
           }))
       );
