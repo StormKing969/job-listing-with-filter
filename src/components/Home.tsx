@@ -39,7 +39,7 @@ const Home = () => {
       <section
         className={"flex flex-col gap-3 items-center justify-center p-5"}
       >
-        <div className={"w-[350px]"}>
+        <div className={"lg:w-3/4 w-[350px]"}>
           {searchTrigger && (
             <SearchBar
               searchTerm={searchTerm}
