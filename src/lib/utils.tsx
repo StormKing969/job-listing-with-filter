@@ -1,14 +1,16 @@
-import data from "../../data/data.json";
 import type { JobApplication } from "../../types/job";
 
-export function loadData() {
-  return data as JobApplication[];
+export async function loadData(): Promise<JobApplication[]> {
+  const response = await fetch("/data.json");
+  const jsonData = await response.json();
+  return jsonData as JobApplication[];
 }
 
 export function loadFilterJobApplications(
   jobApplications: JobApplication[],
   filterData: string[],
-): JobApplication[] {
+) {
+    console.log(jobApplications)
   return jobApplications.filter((item) => {
     return filterData.every((ele) => {
       return (

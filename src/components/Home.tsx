@@ -5,9 +5,8 @@ import ApplicationCard from "./ApplicationCard.tsx";
 import type { JobApplication } from "../../types/job";
 
 const Home = () => {
-  const data = loadData();
-  const [jobApplications, setJobApplications] =
-    useState<JobApplication[]>(data);
+  const [originalData, setOriginalData] = useState<JobApplication[]>([]);
+  const [jobApplications, setJobApplications] = useState<JobApplication[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [filterData, setFilterData] = useState<string[]>([]);
   let ApplicationCardDynamicMargin = "first:mt-35";
@@ -32,11 +31,18 @@ const Home = () => {
   }, [searchTerm]);
 
   useEffect(() => {
+    loadData().then((data) => {
+      setJobApplications(data);
+      setOriginalData(data);
+    });
+  }, []);
+
+  useEffect(() => {
     if (filterData.length !== 0) {
-      const filteredData = loadFilterJobApplications(data, filterData);
+      const filteredData = loadFilterJobApplications(originalData, filterData);
       setJobApplications(filteredData);
     } else {
-      setJobApplications(data);
+      setJobApplications(originalData);
     }
   }, [filterData]);
 
