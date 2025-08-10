@@ -18,7 +18,7 @@ const InfoWrapper = ({
   return (
     <div
       className={
-        "border-2 rounded-xl p-2 text-center items-center bg-blue-100 border-blue-100 shadow-2xl cursor-pointer"
+        "border-2 rounded-xl p-2 text-center items-center bg-blue-100 border-blue-100 shadow-2xl cursor-pointer hover:bg-blue-200"
       }
       onClick={handleClick}
     >

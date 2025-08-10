@@ -21,7 +21,7 @@ const SearchBar = ({
       </div>
 
       <p
-        className={"font-bold text-gray-400 text-xl ml-5 cursor-pointer"}
+        className={"font-bold text-gray-400 text-xl ml-5 cursor-pointer hover:text-gray-500"}
         onClick={() => setFilterData([])}
       >
         Clear

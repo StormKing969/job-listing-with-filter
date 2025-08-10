@@ -20,10 +20,10 @@ const SearchInfoWrapper = ({
         "border-2 rounded-xl bg-blue-100 border-blue-100 shadow-2xl flex flex-row gap-2 justify-center items-center"
       }
     >
-      <p className={"font-bold text-blue-400 p-2"}>{filterName}</p>
+      <p className={"font-bold text-blue-400 p-2 cursor-default"}>{filterName}</p>
       <div
         className={
-          "bg-blue-400 h-full w-full p-2 flex justify-center items-center rounded-r-xl"
+          "bg-blue-400 h-full w-full p-2 flex justify-center items-center rounded-r-xl hover:bg-blue-600"
         }
       >
         <img
