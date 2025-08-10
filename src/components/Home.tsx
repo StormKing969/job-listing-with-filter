@@ -47,7 +47,7 @@ const Home = () => {
   }, [filterData]);
 
   return (
-    <main className={"p-0 m-0 box-border bg-blue-50 relative z-10 h-screen min-w-[400px]"}>
+    <main className={"p-0 m-0 box-border bg-green-50 relative z-10 min-h-screen h-full min-w-[375px] font-['League_Spartan']"}>
       <div className={"absolute h-20 w-full bg-blue-400 -z-10"} />
 
       <picture className={"w-full h-20 mb-5 absolute -z-10"}>

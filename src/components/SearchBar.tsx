@@ -9,7 +9,7 @@ const SearchBar = ({
   setFilterData: React.Dispatch<SetStateAction<string[]>>;
 }) => {
   return (
-    <section className="bg-blue-50 rounded-xs shadow-2xl p-5 mb-15 mt-8 flex flex-row justify-between items-center">
+    <section className="bg-green-50 rounded-xs shadow-2xl p-5 mb-15 mt-8 flex flex-row justify-between items-center">
       <div className={"flex flex-row flex-wrap w-full gap-2"}>
         {filter.map((ele, index) => (
           <SearchInfoWrapper

@@ -31,7 +31,7 @@ const ApplicationCard = ({
         />
 
         <div className={"mt-5 lg:mt-0"}>
-          <div className={"flex flex-row h-fit"}>
+          <div className={"flex flex-row h-fit justify-center items-center"}>
             <h1 className={"mr-2 text-blue-400 font-bold"}>{data.company}</h1>
             {data.new && (
               <StatusWrapper
