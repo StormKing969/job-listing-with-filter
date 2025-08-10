@@ -1,4 +1,4 @@
-import { loadData } from "../lib/utils.tsx";
+import { loadData, loadFilterJobApplications } from "../lib/utils.tsx";
 import SearchBar from "./SearchBar.tsx";
 import { useEffect, useState } from "react";
 import ApplicationCard from "./ApplicationCard.tsx";
@@ -9,26 +9,36 @@ const Home = () => {
   const [jobApplications, setJobApplications] =
     useState<JobApplication[]>(data);
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [filter, setFilter] = useState<string[]>([]);
-  const [searchTrigger, setSearchTrigger] = useState<boolean>(false);
+  const [filterData, setFilterData] = useState<string[]>([]);
   let ApplicationCardDynamicMargin = "first:mt-35";
 
   useEffect(() => {
     if (searchTerm) {
-      setSearchTrigger(true);
       ApplicationCardDynamicMargin = "";
-      if (filter.length !== 0) {
-        if (!filter.includes(searchTerm)) {
-          setFilter((prevState) => [...prevState, searchTerm]);
+      if (filterData.length !== 0) {
+        if (!filterData.includes(searchTerm)) {
+          setFilterData((prevState) => [...prevState, searchTerm]);
         }
       } else {
-        setFilter([searchTerm]);
+        setFilterData([searchTerm]);
       }
-    } else {
-      setSearchTrigger(false);
+    }
+
+    if (filterData.length === 0) {
       ApplicationCardDynamicMargin = "first:mt-35";
     }
+
+    setSearchTerm("");
   }, [searchTerm]);
+
+  useEffect(() => {
+    if (filterData.length !== 0) {
+      const filteredData = loadFilterJobApplications(data, filterData);
+      setJobApplications(filteredData);
+    } else {
+      setJobApplications(data);
+    }
+  }, [filterData]);
 
   return (
     <main className={"p-0 m-0 box-border bg-blue-50 relative z-10"}>
@@ -47,7 +57,9 @@ const Home = () => {
         className={"flex flex-col gap-3 items-center justify-center p-5"}
       >
         <div className={"lg:w-3/4 w-[350px]"}>
-          {searchTrigger && filter.length !== 0 && <SearchBar filter={filter} setFilter={setFilter} />}
+          {filterData.length !== 0 && (
+            <SearchBar filter={filterData} setFilterData={setFilterData} />
+          )}
 
           {jobApplications.map((item) => (
             <ApplicationCard

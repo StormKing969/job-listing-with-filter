@@ -3,10 +3,10 @@ import SearchInfoWrapper from "./SearchInfoWrapper.tsx";
 
 const SearchBar = ({
   filter,
-  setFilter,
+  setFilterData,
 }: {
   filter: string[];
-  setFilter: React.Dispatch<SetStateAction<string[]>>;
+  setFilterData: React.Dispatch<SetStateAction<string[]>>;
 }) => {
   return (
     <section className="bg-blue-50 rounded-xs shadow-2xl p-5 mb-15 mt-8 flex flex-row justify-between items-center">
@@ -15,14 +15,14 @@ const SearchBar = ({
           <SearchInfoWrapper
             key={index}
             filterName={ele}
-            setFilter={setFilter}
+            setFilterData={setFilterData}
           />
         ))}
       </div>
 
       <p
         className={"font-bold text-gray-400 text-xl ml-5 cursor-pointer"}
-        onClick={() => setFilter([])}
+        onClick={() => setFilterData([])}
       >
         Clear
       </p>

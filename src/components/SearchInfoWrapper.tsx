@@ -2,14 +2,16 @@ import React, { type SetStateAction } from "react";
 
 const SearchInfoWrapper = ({
   filterName,
-  setFilter,
+  setFilterData,
 }: {
   filterName: string;
-  setFilter: React.Dispatch<SetStateAction<string[]>>;
+  setFilterData: React.Dispatch<SetStateAction<string[]>>;
 }) => {
   const handleRemoveFilterName = (e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent the click from bubbling up to the parent
-    setFilter((prevState) => prevState.filter((item) => item !== filterName));
+    setFilterData((prevState) =>
+      prevState.filter((item) => item !== filterName),
+    );
   };
 
   return (
